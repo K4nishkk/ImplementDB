@@ -41,7 +41,7 @@ int main(int argc, char *argv[]) {
 
           int recordSize = attrCount * ATTR_SIZE;
           unsigned char *slotPointer = buffer + HEADER_SIZE + slotCount + (recordSize * j); // pointer to starting of slot with attribute name "Class"
-          unsigned char *attrNamePointer = slotPointer + (ATTRCAT_ATTR_NAME_INDEX * ATTR_SIZE);
+          unsigned char *attrNamePointer = slotPointer + (ATTRCAT_ATTR_NAME_INDEX * ATTR_SIZE); // 2nd attribute in this slot is attribute name
 
           char newAttrName[] = "Batch";
           memcpy(attrNamePointer, newAttrName, sizeof(newAttrName));
