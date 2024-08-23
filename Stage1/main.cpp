@@ -8,6 +8,7 @@ int main(int argc, char *argv[]) {
   Disk disk_run;
 
   unsigned char buffer[BLOCK_SIZE];
+  Disk::readBlock(buffer, 7000);
   char message[] = "hello";
   memcpy(buffer + 20, message, 6);
   Disk::writeBlock(buffer, 7000);
