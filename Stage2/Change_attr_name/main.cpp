@@ -40,13 +40,12 @@ int main(int argc, char *argv[]) {
           Disk::readBlock(buffer, ATTRCAT_BLOCK);
 
           int recordSize = attrCount * ATTR_SIZE;
-          unsigned char *slotPointer = buffer + HEADER_SIZE + slotCount + (recordSize * j);
+          unsigned char *slotPointer = buffer + HEADER_SIZE + slotCount + (recordSize * j); // pointer to starting of slot with attribute name "Class"
+          unsigned char *attrNamePointer = slotPointer + (ATTRCAT_ATTR_NAME_INDEX * ATTR_SIZE);
 
-          char data[] = "Batch";
-          memcpy(buffer + 1492 + 16, data, 5);
+          char newAttrName[] = "Batch";
+          memcpy(attrNamePointer, newAttrName, sizeof(newAttrName));
           Disk::writeBlock(buffer, ATTRCAT_BLOCK);
-
-          printf("%s\n", attrCatRecord[ATTRCAT_ATTR_NAME_INDEX].sVal);
         }
       }
     }
